@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens",
+    "christian-kohler.path-intellisense",
+    "usernamehw.errorlens",
+    "sonarsource.sonarlint-vscode",
+    "streetsidesoftware.code-spell-checker",
+    "github.vscode-pull-request-github"
+  ]
+}

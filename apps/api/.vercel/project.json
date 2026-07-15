@@ -1,0 +1,16 @@
+{
+  "projectId": "prj_9pLrYBMupLqD6eBzg00jWaJl0iHg",
+  "orgId": "team_LufmV7CmdHYklGdNNbwrbYQl",
+  "projectName": "about-me-api",
+  "settings": {
+    "createdAt": 1783597674704,
+    "framework": null,
+    "devCommand": null,
+    "installCommand": "pnpm install",
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}
