@@ -33,13 +33,33 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/development'
     steps:
       - uses: actions/checkout@v4
-      - uses: amondnet/vercel-action@v25
+
+      - uses: pnpm/action-setup@v3
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.ORG_ID }}
-          vercel-project-id: ${{ secrets.WEB_PROJECT_ID }}
-          working-directory: apps/web
-          # no --prod flag = preview/staging deployment
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm add -g vercel
+
+      - name: Pull Vercel environment
+        working-directory: apps/web
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.WEB_PROJECT_ID }}
+
+      - name: Build via Vercel CLI
+        working-directory: apps/web
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy prebuilt output
+        working-directory: apps/web
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
   deploy-api-staging:
     needs: test
@@ -47,12 +67,33 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/development'
     steps:
       - uses: actions/checkout@v4
-      - uses: amondnet/vercel-action@v25
+
+      - uses: pnpm/action-setup@v3
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.ORG_ID }}
-          vercel-project-id: ${{ secrets.API_PROJECT_ID }}
-          working-directory: apps/api
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm add -g vercel
+
+      - name: Pull Vercel environment
+        working-directory: apps/api
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.API_PROJECT_ID }}
+
+      - name: Build via Vercel CLI
+        working-directory: apps/api
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy prebuilt output
+        working-directory: apps/api
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
   deploy-web-production:
     needs: test
@@ -60,13 +101,33 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
-      - uses: amondnet/vercel-action@v25
+
+      - uses: pnpm/action-setup@v3
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.ORG_ID }}
-          vercel-project-id: ${{ secrets.WEB_PROJECT_ID }}
-          working-directory: apps/web
-          vercel-args: "--prod"
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm add -g vercel
+
+      - name: Pull Vercel environment
+        working-directory: apps/web
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.WEB_PROJECT_ID }}
+
+      - name: Build via Vercel CLI
+        working-directory: apps/web
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy prebuilt output
+        working-directory: apps/web
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
 
   deploy-api-production:
     needs: test
@@ -74,10 +135,29 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
-      - uses: amondnet/vercel-action@v25
+
+      - uses: pnpm/action-setup@v3
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.ORG_ID }}
-          vercel-project-id: ${{ secrets.API_PROJECT_ID }}
-          working-directory: apps/api
-          vercel-args: "--prod"
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm add -g vercel
+
+      - name: Pull Vercel environment
+        working-directory: apps/api
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.API_PROJECT_ID }}
+
+      - name: Build via Vercel CLI
+        working-directory: apps/api
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy prebuilt output
+        working-directory: apps/api
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
