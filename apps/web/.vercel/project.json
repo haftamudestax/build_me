@@ -1,0 +1,16 @@
+{
+  "projectId": "prj_TjA1fs4i5ILhjQQdc90S1ByWRuB6",
+  "orgId": "team_LufmV7CmdHYklGdNNbwrbYQl",
+  "projectName": "about-me-web",
+  "settings": {
+    "createdAt": 1783580282559,
+    "framework": "vite",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}
