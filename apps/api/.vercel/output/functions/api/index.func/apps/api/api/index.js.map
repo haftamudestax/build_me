@@ -1,0 +1,1 @@
+{"version":3,"file":"index.ts","sources":["D:\\Xcelsz\\build_me\\apps\\api\\api\\index.ts"],"names":[],"mappings":";;;;;AAAA,qDAA6B;AAE7B,kBAAe,aAAG,CAAC","sourcesContent":["import app from \"../src/app\";\r\n\r\nexport default app;\r\n"]}

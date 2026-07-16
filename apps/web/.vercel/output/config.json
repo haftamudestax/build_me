@@ -10,9 +10,5 @@
       "dest": "/404.html"
     }
   ],
-  "framework": {
-    "slug": "vite",
-    "version": "8.1.3"
-  },
   "crons": []
 }

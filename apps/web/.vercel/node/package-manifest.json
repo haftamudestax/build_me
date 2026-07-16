@@ -4368,7 +4368,7 @@
       "scopes": [
         "prod"
       ],
-      "resolved": "4.23.1"
+      "resolved": "4.23.0"
     },
     {
       "name": "turbo",
