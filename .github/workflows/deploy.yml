@@ -22,7 +22,7 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install --frozen-lockfile
-      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm --filter @about-me/web exec playwright install --with-deps chromium
       - run: pnpm turbo run lint
       - run: pnpm turbo run test
       - run: pnpm turbo run build
