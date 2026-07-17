@@ -1,1 +1,16 @@
-{"projectId":"prj_tdJCeF3fLt7W9aOfztbSehLqd7Z5","orgId":"team_LufmV7CmdHYklGdNNbwrbYQl","projectName":"web"}
+{
+  "projectId": "prj_tdJCeF3fLt7W9aOfztbSehLqd7Z5",
+  "orgId": "team_LufmV7CmdHYklGdNNbwrbYQl",
+  "projectName": "web",
+  "settings": {
+    "createdAt": 1784206707611,
+    "framework": "vite",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}
