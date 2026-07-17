@@ -25,7 +25,7 @@ export function ProfileCard({
             component="img"
             image={imageSrc}
             alt={alt}
-            className="!aspect-square !object-cover"
+            className="aspect-square! object-cover!"
           />
           <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-slate-900/80 via-slate-900/10 to-transparent" />
 
